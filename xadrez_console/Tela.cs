@@ -1,5 +1,6 @@
 ﻿using System;
 using tabuleiro;
+using xadrez;
 
 namespace xadrez_console {
 	
@@ -7,11 +8,12 @@ namespace xadrez_console {
 
 		public static void imprimirTabuleiro(Tabuleiro tab) {
 
-			Console.ForegroundColor = ConsoleColor.DarkGray;
+			Console.ForegroundColor = ConsoleColor.Yellow;
 
+			Console.WriteLine();
 			for (int i = 0; i < tab.linhas; i++) {
 
-				Console.Write(8 - i + " ");
+				Console.Write("   " + (8 - i) + " ");
 				for (int j = 0; j < tab.colunas; j++) {
 
 
@@ -27,20 +29,27 @@ namespace xadrez_console {
 				}
 				Console.WriteLine();
 			}
-			Console.WriteLine("  a b c d e f g h ");
+			Console.WriteLine("     a b c d e f g h ");
 
+		}
+
+		public static PosicaoXadrez lerPosicaoXadrez() {
+			string s = Console.ReadLine();
+			char coluna = s[0];
+			int linha = int.Parse(s[1] + "");
+			return new PosicaoXadrez(coluna, linha);
 		}
 
 		public static void imprimirPeca(Peca peca) {
 			if (peca.cor == Cor.Preta) {
 				Console.ForegroundColor = ConsoleColor.Black;
 				Console.Write(peca);
-				Console.ForegroundColor = ConsoleColor.DarkGray;
+				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
 			else {
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.Write(peca);
-				Console.ForegroundColor = ConsoleColor.DarkGray;
+				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
 		}
 
