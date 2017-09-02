@@ -7,20 +7,41 @@ namespace xadrez_console {
 
 		public static void imprimirTabuleiro(Tabuleiro tab) {
 
+			Console.ForegroundColor = ConsoleColor.DarkGray;
+
 			for (int i = 0; i < tab.linhas; i++) {
+
+				Console.Write(8 - i + " ");
 				for (int j = 0; j < tab.colunas; j++) {
+
+
 
 					if (tab.peca(i, j) == null) {
 						Console.Write("- ");
 					}
 					else {
-						Console.Write(tab.peca(i, j) + "  ");
+						imprimirPeca(tab.peca(i, j));
+						Console.Write(" ");
 					}
 				
 				}
 				Console.WriteLine();
 			}
+			Console.WriteLine("  a b c d e f g h ");
 
+		}
+
+		public static void imprimirPeca(Peca peca) {
+			if (peca.cor == Cor.Preta) {
+				Console.ForegroundColor = ConsoleColor.Black;
+				Console.Write(peca);
+				Console.ForegroundColor = ConsoleColor.DarkGray;
+			}
+			else {
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.Write(peca);
+				Console.ForegroundColor = ConsoleColor.DarkGray;
+			}
 		}
 
 	}
