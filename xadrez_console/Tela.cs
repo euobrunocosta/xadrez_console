@@ -31,7 +31,15 @@ namespace xadrez_console {
             imprimirPecasCapturadas(partida);
 			Console.WriteLine("\n");
 			Console.WriteLine("   Partida: " + partida.turno);
-			Console.WriteLine("   Aguardando jogada: " + partida.jogadorAtual);
+			Console.Write("   Aguardando jogada: ");
+			Console.ForegroundColor = (partida.jogadorAtual == Cor.Branca? ConsoleColor.White : ConsoleColor.Black);
+			Console.WriteLine(partida.jogadorAtual);
+			if (partida.xeque) {
+				Console.WriteLine();
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("   XEQUE!");
+				Console.ForegroundColor = ConsoleColor.Yellow;
+			}
 		}
 
 		public static void imprimirPartida(PartidaDeXadrez partida, bool [,] posicoesPossiveis) {
@@ -41,7 +49,16 @@ namespace xadrez_console {
 			imprimirPecasCapturadas(partida);
 			Console.WriteLine("\n");
 			Console.WriteLine("   Partida: " + partida.turno);
-			Console.WriteLine("   Aguardando jogada: " + partida.jogadorAtual);
+			Console.Write("   Aguardando jogada: ");
+			Console.ForegroundColor = (partida.jogadorAtual == Cor.Branca ? ConsoleColor.White : ConsoleColor.Black);
+			Console.WriteLine(partida.jogadorAtual);
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			if (partida.xeque) {
+				Console.WriteLine();
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("   XEQUE!");
+				Console.ForegroundColor = ConsoleColor.Yellow;
+			}
 		}
 
 		public static void imprimirPecasCapturadas(PartidaDeXadrez partida) {
