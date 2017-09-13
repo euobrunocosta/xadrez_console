@@ -31,13 +31,26 @@ namespace xadrez_console {
             imprimirPecasCapturadas(partida);
 			Console.WriteLine("\n");
 			Console.WriteLine("   Partida: " + partida.turno);
-			Console.Write("   Aguardando jogada: ");
-			Console.ForegroundColor = (partida.jogadorAtual == Cor.Branca? ConsoleColor.White : ConsoleColor.Black);
-			Console.WriteLine(partida.jogadorAtual);
-			if (partida.xeque) {
+			if (!partida.terminada) {
+				Console.Write("   Aguardando jogada: ");
+				Console.ForegroundColor = (partida.jogadorAtual == Cor.Branca ? ConsoleColor.White : ConsoleColor.Black);
+				Console.WriteLine(partida.jogadorAtual);
+				if (partida.xeque) {
+					Console.WriteLine();
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine("   XEQUE!");
+					Console.ForegroundColor = ConsoleColor.Yellow;
+				}
+			}
+			else {
 				Console.WriteLine();
 				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("   XEQUE!");
+				Console.WriteLine("   XEQUEMATE!");
+				Console.WriteLine();
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.Write("   Vencedor: ");
+				Console.ForegroundColor = (partida.jogadorAtual == Cor.Branca? ConsoleColor.White : ConsoleColor.Black);
+				Console.WriteLine(partida.jogadorAtual);
 				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
 		}
